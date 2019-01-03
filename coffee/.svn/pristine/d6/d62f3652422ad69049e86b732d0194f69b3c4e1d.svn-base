@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+.jumbotron{
+	background: url(../images/full-moon.jpg) no-repeat center center fixed;
+}

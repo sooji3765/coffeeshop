@@ -1,0 +1,142 @@
+@charset "UTF-8";
+/***** Login page *****/
+
+#login{
+	width:100%;
+	background: url(../images/coffee-bg.jpg) no-repeat center center fixed	
+}
+ 
+.login-page { 
+	padding: 140px 0 100px 0;
+}
+.login-text { 
+	padding-bottom: 60px; 
+	color: #fff; 
+}
+.login-text h1 { 
+	color: #fff; 
+	text-shadow: 0 1px 6px rgba(51, 51, 51, 0.2); 
+}
+.login-text p { 
+	margin-top: 20px; 
+	font-size: 18px; 
+	line-height: 36px; 
+	text-shadow: 0 1px 5px rgba(51, 51, 51, 0.4); 
+}
+ 
+.l-form-top {
+    overflow: hidden; 
+    padding: 0 30px 20px 30px; 
+    background: #404040; 
+    background: rgba(51, 51, 51, 0.8); 
+    text-align: left;
+    -moz-border-radius: 6px 6px 0 0; 
+    -webkit-border-radius: 6px 6px 0 0; 
+    border-radius: 6px 6px 0 0;
+}
+.l-form-top-left { 
+	float: left; 
+	width: 75%; 
+	padding-top: 30px; 
+	}
+.l-form-top-left h3 { 
+	margin-top: 0; 
+	color: #fff; }
+.l-form-top-left p { 
+	opacity: 0.8; 
+	font-size: 18px; 
+	line-height: 32px; 
+	color: #fff; }
+.l-form-top-right { 
+	float: left; 
+	width: 25%; 
+	padding-top: 10px; 
+	font-size: 66px; 
+	color: #fff; 
+	line-height: 100px; 
+	text-align: right; 
+	opacity: 0.3; }
+.l-form-bottom {
+    padding: 30px 30px 35px 30px; 
+    background: #404040; 
+    background: rgba(51, 51, 51, 0.7); 
+    text-align: left;
+    -moz-border-radius: 0 0 6px 6px; 
+    -webkit-border-radius: 0 0 6px 6px; 
+    border-radius: 0 0 6px 6px;
+}
+ 
+.login-box input[type="text"],
+.login-box input[type="password"], 
+.login-box input[type="email"]{
+    height: 52px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+    background: #fff;
+    border: 3px solid #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 52px;
+    color: #888;
+    -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+ 
+.login-box input[type="text"]:focus, 
+.login-box input[type="password"]:focus, 
+.login-box input[type="email"]:focus{
+    outline: 0; 
+    background: #fff; 
+    border: 3px solid #2ba560;
+    -moz-box-shadow: none; 
+    -webkit-box-shadow: none; 
+    box-shadow: none;
+}
+ 
+.login-box input.input-error { border-color: #e7603c; }
+ 
+.login-box input[type="text"]::-moz-placeholder, 
+.login-box input[type="password"]::-moz-placeholder { 
+	color: #888; 
+}
+.login-box input[type="text"]:-ms-input-placeholder, .login-box input[type="password"]:-ms-input-placeholder { color: #888; }
+.login-box input[type="text"]::-webkit-input-placeholder, .login-box input[type="password"]::-webkit-input-placeholder { color: #888; }
+ 
+.login-box button.btn {
+    width: 100%;
+    height: 52px;
+    margin: 0;
+    padding: 0 20px;
+    vertical-align: middle;
+   /*  background: #2ba560; */
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 52px;
+    /* color: #fff; */
+    -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;
+    text-shadow: none;
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+    -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+ 
+.login-box button.btn:hover,
+.login-box button.btn:focus,
+.login-box button.btn:active,
+.login-box button.btn:active:focus,
+.login-box button.btn.active:focus {
+    outline: 0; background: #279456; border: 0; color: #fff; 
+    -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
+}
+ 
+.login-box .checkbox { margin-top: 15px; margin-bottom: 0; }
+.login-box .checkbox label { font-size: 18px; line-height: 18px; font-weight: 300; color: #fff; color: rgba(255,255,255,.8); }
+.login-box .checkbox label::before { border-color: #fff; border-radius: 4px; }
+ 
+.login-social { margin-top: 35px; }
+.login-social h3 { color: #fff; }
+.login-social-buttons { margin-top: 30px; }

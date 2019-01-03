@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/* contact section */
+#contact-header {
+  background: url('../images/about-header.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  padding-top: 160px;
+}
+#contacts {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+#contacts h2 {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+#myinfo{
+	padding: 20px;
+	margin-top: 40px;
+	background-color: black;
+	color: white;
+}

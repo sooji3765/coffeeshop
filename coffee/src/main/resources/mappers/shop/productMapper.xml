@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="product">
+
+	<select id="list" resultType="Product">
+		select *
+		from products
+	</select>
+	
+	<insert id="insert">
+		insert into products(product_name,product_amount,price,description,product_url)
+		values(#{product_name},#{product_amount},#{price},#{description},#{product_url})
+	</insert>
+	
+	<select id="detail" resultType="Product">
+		select *
+		from products
+		where product_id=#{product_id}
+	</select>
+	
+	<delete id="delete">
+		delete from products
+		where product_id=#{product_id}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

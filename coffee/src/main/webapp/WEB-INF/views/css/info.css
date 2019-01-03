@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+#info-header{
+	background: url('../images/about-header.jpg') no-repeat;
+  	background-size: cover;
+  	background-position: center;
+  	min-height: 300px;
+  	padding-top: 160px;
+}

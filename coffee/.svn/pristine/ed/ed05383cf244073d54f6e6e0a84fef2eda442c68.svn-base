@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="com.myspring.coffee.model.member.dto.MemberDTO" alias="Member"/>
+		<typeAlias type="com.myspring.coffee.model.shop.dto.ProductDTO" alias="Product"/>
+		<typeAlias type="com.myspring.coffee.model.shop.dto.CartDTO" alias="Cart"/>
+		<typeAlias type="com.myspring.coffee.model.shop.dto.LectureDTO" alias="Lecture"/>
+		<!-- <typeAlias type="com.myspring.coffee.model.board.dto.BoardDTO" alias="Board"/>
+		<typeAlias type="com.myspring.coffee.model.board.dto.ReplyDTO" alias="Reply"/> -->
+	</typeAliases>
+
+</configuration>
+

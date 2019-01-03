@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="cart">
+	
+	
+	<!-- 바로 구매  -->
+	<insert id="insert">
+		insert into cart(userid,product_id, amount,state)
+		values(#{userid},#{product_id},#{amount},#{state})
+	</insert>
+	
+	
+	<!-- 바로 구매 목록 -->
+	<select id="list" resultType="Cart" parameterType="hashmap">
+		select *
+		from cart
+		where userid=#{userid} and state=#{state}
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

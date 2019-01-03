@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 다른 mapper와 중복되지 않도록 네임스페이스 기재 -->
+<mapper namespace="member">
+
+	<select id="check" resultType="String">
+		select username
+		from member
+		where userid=#{userid} and password=#{password}
+	</select>
+
+	
+	<select id="viewMember" resultType="Member" parameterType="String">
+		select * 
+		from member
+		where userid=#{userid}
+	</select>
+	
+	<select id="gradecheck" resultType="Int" parameterType="Member">
+		select user_grade
+		from member
+		where userid=#{userid} and password=#{password}
+	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		insert into member(userid,username,password,email,join_date,phone,address)
+		values(#{userid},#{username},#{password},#{email},sysdate(),#{phone},'안양시');
+	</insert>
+	
+	<select id="list" resultType="Member">
+		select *
+		from member
+		where user_grade in (1,2)
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
