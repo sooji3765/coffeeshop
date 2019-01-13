@@ -6,12 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myspring.coffee.model.shop.dto.CartDTO;
@@ -146,5 +149,15 @@ public class CartController {
 		
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="delete.do", method=RequestMethod.POST)
+	public String delete(HttpServletRequest request) {
+		
+		String cart_id = request.getParameter("cart_id");
+		
+		cartService.delete(cart_id);
+		
+		return "0";
+	}
 	
 }

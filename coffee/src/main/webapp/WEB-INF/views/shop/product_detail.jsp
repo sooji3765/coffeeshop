@@ -38,13 +38,13 @@
             <a class="nav-link" href="${path}/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Menu</a>
+            <a class="nav-link" href="${path}/shop/product/product_list.do">Product</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Program</a>
+            <a class="nav-link" href="${path}/shop/lecture/lecture_list.do">Program</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="${path}/contact.do">Contact</a>
           </li>
           <li class="nav-item dropdown active">
 	        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,15 +60,22 @@
         </ul>        
       </div>
     </div>
-  </nav><!--Main Navigation-->  
+  </nav><!--Main Navigation-->
+  
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">상품 정보</h1>
+      <p class="lead text-muted">${list.product_name }</p>
+    </div>
+  </section>  
   
   
   <div class="container">
-	  <div class="py-5 text-center">
+	<!--   <div class="py-5 text-center">
 	    <img class="d-block mx-auto mb-4" src="/docs/4.2/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
 	    <h2>상품 정보</h2>
 	    <p class="lead">Below is an example form built entirely with Bootstrap’s form  controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-	  </div>
+	  </div> -->
 
 	<div class="row">
 		<!-- 이미지 -->

@@ -8,5 +8,5 @@ public interface CartDAO {
 	
 	public void insert(CartDTO dto);
 	public List<CartDTO> list(String userid, int state);
-
+	public void delete(String cart_id);
 }

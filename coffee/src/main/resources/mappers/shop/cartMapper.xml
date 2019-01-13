@@ -21,6 +21,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where userid=#{userid} and state=#{state}
 	</select>
 	
+	<!-- 장바구니 목록 삭제  -->
+	<delete id="delete">
+		delete from cart
+		where cart_id = #{cart_id}
+	</delete>
+	
 </mapper>
 
 

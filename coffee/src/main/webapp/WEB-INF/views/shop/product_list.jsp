@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- 태그라이브러리 선언  -->   
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <c:set var="path" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -14,7 +15,7 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="${path}/css/style.css">
-    <link rel="stylesheet" href="${path}/css/list.css">
+    <link rel="stylesheet" href="${path}/css/list.css?ver=1">
 <title>Coffee Buy&Learn</title>
 
 </head>
@@ -77,17 +78,17 @@
 
  <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Album example</h1>
+      <h1 class="jumbotron-heading">Coffee Beans</h1>
       <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
-        <a href="#" class="btn btn-outline-light my-2">Main call to action</a>
-        <a href="#" class="btn btn-outline-light my-2">Secondary action</a>
+        <a href="#" class="btn btn-outline-light my-2">신 상품</a>
+        <a href="#" class="btn btn-outline-light my-2">인기 원두</a>
       </p>
     </div>
   </section>
 
 <section>
-  <div class="album py-5">
+  <div class="album py-5 border-0">
     <div class="container">
 
       <div class="row">
@@ -96,15 +97,13 @@
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="230" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
             <title>Placeholder</title>
-           	<image xlink:href="${path}/images/${list.product_url}" x="0" y="0" height="100%" width="100%"/>   
+           	<image xlink:href="${path}/images/${list.product_url}" x="0" y="0" height="100%" width="100%" class="rounded"/>   
             </svg>
             <div class="card-body">
-              <p class="card-text">${list.product_name}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='${path}/shop/product/product_detail/${list.product_id}'">Purchase</button>
-                </div>
+              <p class="card-text text-center font-weight-bold text-uppercase">${list.product_name}</p>
+              <p class="card-text text-center"><fmt:formatNumber type="number" value="${list.price}"/>원</p>
+              <div class="d-flex justify-content-between align-items-center">         
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='${path}/shop/product/product_detail/${list.product_id}'">구매하기</button>
               </div>
             </div>
           </div>
@@ -115,6 +114,7 @@
     
   </div>
 </section>
+
 <!-- footer -->
 <footer class="container-fluid text-center">
   <div class="row">

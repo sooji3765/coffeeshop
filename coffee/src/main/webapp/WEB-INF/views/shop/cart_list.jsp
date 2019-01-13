@@ -115,7 +115,7 @@
 					</div>
 				</td>
 				<td><h4><fmt:formatNumber type="number" value="${row.money}"/></h4></td>
-				<td><button type="button" onclick="delete()" class="btn btn-outline-danger">삭제</button></td>
+				<td><button type="button" data-toggle="modal" data-target="#deleteModal" class="btn btn-outline-danger" data-whatever="${row.cart_id}" data-name="${row.product_name}">삭제</button></td>
 				<td><button type="button" onclick="modify()" class="btn btn-outline-default">수정</button></td>
 				</tr>
 			</c:forEach>
@@ -157,18 +157,67 @@
   </div>
 </footer>
 
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">삭제하시겠습니까?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>장바구니에서 이 상품을 지우시겠습니까?</p>
+        <input type="hidden" id="cart_id">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" onclick="deleteCart()">삭제</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script>
-$(window).scroll(function(){
-	$('nav').toggleClass('scrolled',$(this).scrollTop()>80);
-});
+<script type="text/javascript" src="${path}/js/main_nav.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	    $('#deleteModal').on('shown.bs.modal', function (event) {
+	    	  var button = $(event.relatedTarget)
+	    	  var cart_id = button.data('whatever')
+	    	  var product_name = button.data('name')
+	    	  
+	    	  var modal = $(this)
+	    	  modal.find('.modal-title').text(product_name+'을(를) 삭제하시겠습니까?')
+	    	  modal.find('.modal-body input').val(cart_id)
+	    	  
+	    	});
+    });
 </script>
-
+<script type="text/javascript">
+function deleteCart(){
+	$.ajax({
+		type:'POST',
+		url:'${path}/shop/cart/delete.do',
+		data:{
+			cart_id : $('#cart_id').val()		
+		},
+		success: function(data){
+			if($.trim(data)==0){
+				alert('성공');
+			}else{
+				alert('실패');
+			}
+		}
+	})
+	
+}
+</script>
 
 </body>
 </html>

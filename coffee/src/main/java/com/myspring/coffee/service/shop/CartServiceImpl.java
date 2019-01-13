@@ -24,8 +24,14 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public List<CartDTO> list(String userid, int state) {
-		// TODO Auto-generated method stub
+		
 		return cartDao.list(userid,state);
 	}
 
+	@Override
+	public void delete(String cart_id) {
+		
+		cartDao.delete(cart_id);
+		
+	}
 }
