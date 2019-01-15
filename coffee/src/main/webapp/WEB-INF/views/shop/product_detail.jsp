@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!-- 태그라이브러리 선언  -->   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
@@ -15,14 +16,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="${path}/css/style.css">
     <link rel="stylesheet" href="${path}/css/info.css">
-<title>Coffee Buy&Learn</title>
+	<title>Coffee Buy&Learn</title>
 
 </head>
 <!--Main Navigation-->
 
 
 <body>
-
   <!--Navbar-->
   <nav class="navbar navbar-inverse navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="mainNav">
     <div class="container">
@@ -218,9 +218,6 @@
 	<hr>
   
   </div>
-
-
-
 
 <!-- footer -->
 <footer class="container-fluid text-center">
