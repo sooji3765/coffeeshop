@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     
 <!-- 태그라이브러리 선언  -->   
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <c:set var="path" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -170,7 +170,7 @@
 		  
 			<form>
 				<div class="input-group mb-3">
-				<textarea class="form-control" aria-label="with text" aria-describedby="button-addon2"></textarea>
+				<textarea class="form-control" aria-label="with text" aria-describedby="button-addon2" id="content"></textarea>
 				
 				  <div class="input-group-append">
 				    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
@@ -183,34 +183,22 @@
 			  <thead class="thead-dark">
 			    <tr>
 			      <th scope="col">#</th>
-			      <th scope="col">First</th>
-			      <th scope="col">Last</th>
-			      <th scope="col">Handle</th>
+			      <th scope="col">문의내용</th>
+			      <th scope="col">날짜</th>
+			      <th scope="col">사용자ID</th>
 			    </tr>
 			  </thead>
 			  <tbody>
+			    <c:forEach items="${row}" var="row">
 			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@mdo</td>
+			      <th scope="row">${row.board_id}</th>
+			      <td>${row.content}</td>
+			      <td>${row.register_date}</td>
+			      <td>${row.userid}</td>
 			    </tr>
-			    <tr>
-			      <th scope="row">2</th>
-			      <td>Jacob</td>
-			      <td>Thornton</td>
-			      <td>@fat</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">3</th>
-			      <td>Larry</td>
-			      <td>the Bird</td>
-			      <td>@twitter</td>
-			    </tr>
+			    </c:forEach>
 			  </tbody>
 			</table>
-			
-			
 			
 		  </div>
 		</div>
@@ -248,16 +236,49 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-<script>
-$(window).scroll(function(){
-	$('nav').toggleClass('scrolled',$(this).scrollTop()>80);
-});
-</script>
-
+<script src="${path}/js/main_nav.js"></script>
 <script type="text/javascript">
+	var product_id = $("#product_id").val();
+	
+	$(document).ready(function() {
+		
+		$("#button-addon2").click(function() {
+			
+			var content = $("#content").val();
+			
+			if(content==""){
+				alert("문의 내용을 적어주세요");
+				$("#content").focus();
+				return;
+				
+			}	
+				$.ajax({
+					type :'POST',
+					url : "${path}/shop/product/putContent.do",
+					data :{
+						"content" : content,
+						"product_id":product_id
+					},
+					success:function(data){
+						
+						if(data="success"){
+							$("#content").val("");
+						}
+						
+					}
+					
+				});
+			
+			
+		});
+		
+	});
 
+</script>
+<script type="text/javascript">
 	function cartCheck() {
 		document.form1.action="${path}/shop/cart/insert_basket.do";
 		document.form1.submit();	
