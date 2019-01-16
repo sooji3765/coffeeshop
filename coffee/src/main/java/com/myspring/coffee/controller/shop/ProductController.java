@@ -3,17 +3,23 @@ package com.myspring.coffee.controller.shop;
 import java.io.File;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.myspring.coffee.model.board.dto.BoardDTO;
 import com.myspring.coffee.model.shop.dto.CartDTO;
 import com.myspring.coffee.model.shop.dto.ProductDTO;
+import com.myspring.coffee.service.board.BoardService;
 import com.myspring.coffee.service.shop.ProductService;
 
 @Controller
@@ -25,6 +31,11 @@ public class ProductController {
 	
 	@Inject
 	ProductService productService;
+	
+	
+	@Inject
+	BoardService boardService;
+	
 	
 	@RequestMapping("product_list.do")
 	public ModelAndView product_list() {
@@ -92,8 +103,21 @@ public class ProductController {
 			ModelAndView mav) {
 		mav.setViewName("shop/product_detail");
 		mav.addObject("list",productService.detail(product_id) );
+		mav.addObject("row",boardService.list(product_id));
 		return mav;
 	}
 	
-
+	@ResponseBody
+	@RequestMapping("putContent.do")
+	public String putContent(BoardDTO dto, HttpSession session , HttpServletRequest request) {
+				
+		String userid = (String)session.getAttribute("userid");
+		logger.info("content 확인"+dto.getContent());
+		logger.info("product_id"+dto.getProduct_id());
+		dto.setUserid(userid);
+		boardService.insert(dto);
+		
+		return "success";
+	}
+	
 }
